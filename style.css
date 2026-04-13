@@ -1,0 +1,64 @@
+:root {
+    --cream: #f2e4cd;
+}
+
+p, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.town-square {
+    display: inline-grid;
+
+    .token {
+        offset: circle(280px) calc((100% * sibling-index()/sibling-count())) 0deg;
+    }
+}
+
+.token {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.inner-token {
+    background-color: var(--cream);
+    border: 5px solid lightskyblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    gap: 10px;
+}
+
+.token-img {
+    max-width: 60%;
+    display: block;
+    justify-self: center;
+    align-self: center;
+}
+
+.info-card {
+    background-color: var(--cream);
+    border: 3px solid black;
+    border-radius: 20px;
+    max-width: 200px;
+
+    padding: 10px;
+
+    h5 {
+        margin-bottom: 10px;
+    }
+}
