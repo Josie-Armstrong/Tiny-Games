@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vxu0obh.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="town-square">
+
         <div class="token" id="outer-token-1">
             <div class="inner-token" id="inner-token-1">
                 <img class="token-img" src="images/Icon_saint.png">
@@ -18,73 +21,128 @@
 
         <div class="token" id="outer-token-2">
             <div class="inner-token" id="inner-token-2">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_investigator.png">
+                <p class="character">Investigator</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Fraser</p>
         </div>
 
         <div class="token" id="outer-token-3">
             <div class="inner-token" id="inner-token-3">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_recluse.png">
+                <p class="character">Recluse</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Adam</p>
         </div>
 
         <div class="token" id="outer-token-4">
             <div class="inner-token" id="inner-token-4">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_ravenkeeper.png">
+                <p class="character">Ravenkeeper</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Jasmine</p>
         </div>
 
         <div class="token" id="outer-token-5">
             <div class="inner-token" id="inner-token-5">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_empath.png">
+                <p class="character">Empath</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">You</p>
         </div>
 
         <div class="token" id="outer-token-6">
             <div class="inner-token" id="inner-token-6">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_fortuneteller.png">
+                <p class="character">Fortune Teller</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Dan</p>
         </div>
 
         <div class="token" id="outer-token-7">
             <div class="inner-token" id="inner-token-7">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_librarian.png">
+                <p class="character">Librarian</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Hannah</p>
         </div>
 
         <div class="token" id="outer-token-8">
             <div class="inner-token" id="inner-token-8">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_undertaker.png">
+                <p class="character">Undertaker</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Tom</p>
         </div>
 
         <div class="token" id="outer-token-9">
             <div class="inner-token" id="inner-token-9">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
+                <img class="token-img" src="images/Icon_butler.png">
+                <p class="character">Butler</p>
             </div>
-            <p class="name">Matthew</p>
+            <p class="name">Sarah</p>
         </div>
     </div>
 
+    <div class="info-bg" id="info-bg">
+        <h5>Information Cards (Draggable):</h5>
+        <button id="hide-info">Hide</button>
+    </div>
+
     <div class="info">
-        <div class="info-card" id="ic-1">
+        <div class="info-card valid-as-outsider" id="ic-1">
             <h5>Matthew:</h5>
             <p>"I'm the Saint!"</p>
+        </div>
+
+        <div class="info-card" id="ic-2">
+            <h5>Fraser:</h5>
+            <p>"Either Hannah or Sarah is the Spy."</p>
+        </div>
+
+        <div class="info-card valid-as-outsider" id="ic-3">
+            <h5>Adam:</h5>
+            <p>"I'm the Recluse!"</p>
+        </div>
+
+        <div class="info-card" id="ic-4">
+            <h5>Jasmine:</h5>
+            <p>"I saw Tom as the Undertaker."</p>
+        </div>
+
+        <div class="info-card" id="ic-5">
+            <h5>You:</h5>
+            <p>You saw 0 between Jasmine and Dan on nights 1 and 2.</p>
+        </div>
+
+        <div class="info-card" id="ic-6">
+            <h5>Dan:</h5>
+            <p>"I saw:<br>N1: Sarah & Fraser = no,<br>N2: You & Hannah = no,<br>N3: Dan & Hannah = no."</p>
+        </div>
+
+        <div class="info-card" id="ic-7">
+            <h5>Hannah:</h5>
+            <p>"Either Tom or Fraser is the Drunk."</p>
+        </div>
+
+        <div class="info-card" id="ic-8">
+            <h5>Tom:</h5>
+            <p>"I saw:<br>N2: Sarah = Butler,<br>N3: You = Baron,<br>N4: Dan = Spy."</p>
+        </div>
+
+        <div class="info-card valid-as-outsider" id="ic-9">
+            <h5>Sarah:</h5>
+            <p>"Tea?"</p>
+        </div>
+    </div>
+
+    <div class="token-depot">
+        <h5>Could be in play:</h5>
+        <div class="inner-depot">
+            <div class="draggable-token" id="inner-token-7">
+                <img class="token-img" src="images/Icon_imp.png">
+                <p class="character">Imp</p>
+            </div>
         </div>
     </div>
 

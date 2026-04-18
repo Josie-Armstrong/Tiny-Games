@@ -1,24 +1,45 @@
 :root {
     --cream: #f2e4cd;
+    --t-col: #2085ea;
+    --o-col: #3bd3c9;
+    --m-col: #f98322;
+    --d-col: #bc0f0f;
+    --dark-red: #4E0111;
+    --light-gold: #ffd799;
+    --inv-fill: #807768;
+    --char-font: "news-gothic-std";
+}
+
+@font-face {
+    font-family: "Dumbledor";
+    src: url(fonts/dum1.ttf);
+}
+
+body {
+    background-image: url(images/botc-bg-3.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 p, h5 {
     margin: 0;
     padding: 0;
+    font-family: var(--char-font);
 }
 
 .town-square {
     display: inline-grid;
+    align-self: center;
 
     .token {
-        offset: circle(280px) calc((100% * sibling-index()/sibling-count())) 0deg;
+        offset: circle(280px) calc((100% * (sibling-index() - 3)/(sibling-count()))) 0deg;
     }
 }
 
 .token {
     position: absolute;
-    width: 150px;
-    height: 150px;
     padding: 10px;
 
     display: flex;
@@ -27,38 +48,167 @@ p, h5 {
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    .name {
+        background-color: var(--dark-red);
+        padding: 5px 10px;
+        border-radius: 20px;
+        color: var(--cream);
+        font-weight: 500;
+    }
 }
 
 .inner-token {
+    background-image: url(images/token-bg.png);
+    background-size: cover;
+    background-position: center;
     background-color: var(--cream);
-    border: 5px solid lightskyblue;
+
+    box-sizing: border-box;
+    border: 5px solid black;
+    box-shadow: 0px 0px 8px 8px var(--t-col);
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    max-height: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-content: center;
-    gap: 10px;
+    gap: 5px;
+
+    p {
+        font-size: 0.8rem;
+        max-width: 80%;
+        text-align: center;
+        align-self: center;
+        font-style: normal;
+        font-weight: bold;
+    }
 }
 
 .token-img {
     max-width: 60%;
+    max-height: 55%;
     display: block;
     justify-self: center;
     align-self: center;
+}
+
+.info-bg {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 196px;
+    height: 480px;
+    background-color: var(--dark-red);
+    border: 5px solid var(--cream);
+
+    padding: 10px;
+    text-align: center;
+    color: var(--cream);
+
+    h5 {
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: 60px;
+        align-self: flex-end;
+        background-color: var(--cream);
+        color: black;
+        border: none;
+        border-radius: 10px;
+        padding: 6px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background-color: var(--light-gold);
+        transition: 0.2s;
+    }
+}
+
+.info-bg.hide {
+    display: none;
 }
 
 .info-card {
     background-color: var(--cream);
     border: 3px solid black;
     border-radius: 20px;
-    max-width: 200px;
+    max-width: 160px;
+    width: auto;
+
+    box-shadow: 0px 0px 10px 2px rgb(0,0,0,0.5);
+
+    position: absolute;
+    top: calc(40px + (sibling-index() * 40px));
+    left: 40px;
 
     padding: 10px;
 
     h5 {
         margin-bottom: 10px;
+    }
+
+    h5, p {
+        font-size: 0.9rem;
+    }
+}
+
+.info-card.invalid {
+    background-color: var(--inv-fill);
+}
+
+.token-depot {
+    width: 450px;
+    height: 230px;
+    border: 5px solid var(--cream);
+
+    position: absolute;
+    float: left;
+    bottom: 20px;
+    left: 20px;
+}
+
+.inner-depot {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.draggable-token {
+    background-image: url(images/token-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--cream);
+
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    gap: 5px;
+
+    p {
+        font-size: 0.8rem;
+        max-width: 80%;
+        text-align: center;
+        align-self: center;
+        font-style: normal;
+        font-weight: bold;
     }
 }
