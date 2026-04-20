@@ -20,8 +20,19 @@ const inner_tokens = [document.getElementById("inner-token-1"),
     document.getElementById("inner-token-9")
 ];
 
+const overlays = [document.getElementById("over1"),
+    document.getElementById("over2"),
+    document.getElementById("over3"),
+    document.getElementById("over4"),
+    document.getElementById("over5"),
+    document.getElementById("over6"),
+    document.getElementById("over7"),
+    document.getElementById("over8"),
+    document.getElementById("over9"),
+]
+
 const color_switch_array = ["var(--t-col)", "var(--o-col)", "var(--m-col)", "var(--d-col)"];
-let current_colors = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+let current_colors = [1, 0, 1, 0, 0, 0, 0, 0, 1];
 
 for (let i = 0; i < inner_tokens.length; i++) {
     let temp_i = i;
@@ -58,9 +69,44 @@ for (let i = 0; i < info_cards.length; i++) {
     document.addEventListener("mouseup", (e) => {mouseUp(e, temp_i)});
 }
 
+// For the draggable tokens
+const extra_tokens = [document.getElementById("imp"),
+    document.getElementById("poisoner"),
+    document.getElementById("spy"),
+    document.getElementById("baron"),
+    document.getElementById("scarlet-woman"),
+    document.getElementById("drunk")
+]
+let token_dragging = [false, false, false, false, false, false];
+let token_offsets = [[0,0],
+    [0,0],
+    [0,0],
+    [0,0],
+    [0,0],
+    [0,0]
+]
+let token_set = [false, false, false, false, false, false];
+for (let i = 0; i < extra_tokens.length; i++) {
+    let temp_i = i;
+    extra_tokens[i].addEventListener("mousedown", (e) => {mouseDownToken(e, temp_i)});
+    document.addEventListener("mousemove", (e) => {dragToken(e, extra_tokens[temp_i], temp_i)});
+    document.addEventListener("mouseup", (e) => {mouseUpToken(e, temp_i)});
+}
+let extra_colors = [3, 2, 2, 2, 2, 1]; //Colors for draggable tokens
+
 const info_bg = document.getElementById("info-bg");
 const hide_info_btn = document.getElementById("hide-info")
 hide_info_btn.addEventListener('click', (e) => {toggleInfoBG()});
+
+document.getElementById("submit-sol").addEventListener('click', checkSolution);
+
+window.addEventListener("load", () => {runOnLoad()});
+
+function runOnLoad() {
+    for (let i = 0; i < inner_tokens.length; i++) {
+        inner_tokens[i].style.boxShadow = `0px 0px 8px 8px ${color_switch_array[current_colors[i]]}`;
+    }
+}
 
 function switchTokenColor(i) {
     let new_color;
@@ -88,6 +134,23 @@ function switchTokenColor(i) {
     }
 }
 
+// Setting token color for the drag and drop tokens
+function setTokenColor(color_index, token_index) {
+    let new_color = color_switch_array[extra_colors[color_index]];
+    inner_tokens[token_index].style.boxShadow = `0px 0px 8px 8px ${new_color}`;
+    current_colors[token_index] = extra_colors[color_index];
+
+    if (current_colors[token_index] == 1 && (!info_cards[token_index].classList.contains("valid-as-outsider"))) {
+        info_cards[token_index].classList.add("invalid");
+    }
+    else if (current_colors[token_index] > 1) {
+        info_cards[token_index].classList.add("invalid");
+    }
+    else {
+        info_cards[token_index].classList.remove("invalid");
+    }
+}
+
 function dragInfoCard(event, card, index) {
     if (card_dragging[index]) {
         console.log("dragging");
@@ -99,7 +162,7 @@ function dragInfoCard(event, card, index) {
 function mouseDown(event, index) {
     card_dragging[index] = true;
     card_offsets[index["offsetX"]] = event.clientX - info_cards[index].offsetLeft;
-    card_offsets[index["offsetX"]] = event.clientY - info_cards[index].offsetTop;
+    card_offsets[index["offsetY"]] = event.clientY - info_cards[index].offsetTop;
 }
 
 function mouseUp(event, index) {
@@ -109,4 +172,93 @@ function mouseUp(event, index) {
 function toggleInfoBG() {
     console.log("hide toggle");
     info_bg.classList.toggle("hide");
+}
+
+function dragToken(event, token, index) {
+    if (token_dragging[index]) {
+        // console.log("dragging");
+        token.style.left = `${event.clientX - token_offsets[index][0]}px`;
+        token.style.top = `${event.clientY - token_offsets[index][1]}px`;
+
+        // console.log(event.clientY - token_offsets[index][1]);
+    }
+}
+
+function mouseDownToken(event, index) {
+    if (!token_set[index]) {
+        extra_tokens[index].style.left = `${extra_tokens[index].offsetLeft}px`;
+        extra_tokens[index].style.top = `${extra_tokens[index].offsetTop}px`;
+        extra_tokens[index].style.position = "absolute";
+        // console.log(extra_tokens[index].style.position, extra_tokens[index].style.top, extra_tokens[index].style.left);
+        token_set[index] = true;
+    }
+    token_dragging[index] = true;
+
+    let temp_x = event.clientX - extra_tokens[index].offsetLeft;
+    let temp_y = event.clientY - extra_tokens[index].offsetTop;
+    // console.log(temp_x, temp_y);
+    // console.log(index);
+    token_offsets[index][0] = temp_x;
+    token_offsets[index][1] = temp_y;
+    // console.log(token_offsets);
+    // console.log(token_offsets[index]);
+
+    for (let i = 0; i < overlays.length; i++) {
+        overlays[i].classList.remove("hide");
+    }
+}
+
+function mouseUpToken(event, index) {
+    token_dragging[index] = false;
+
+    for (let i = 0; i < overlays.length; i++) {
+        overlays[i].classList.add("hide");
+    }
+
+    checkBounds(extra_tokens[index], index);
+}
+
+function checkBounds(token, index) {
+    for (let i = 0; i < inner_tokens.length; i++) {
+        let box1 = token.getBoundingClientRect();
+        let box2 = inner_tokens[i].getBoundingClientRect();
+        // console.log(box1, box2);
+
+        // If the hit boxes for token and player token overlap, put the token in the player's position and change their color
+        if (Math.abs(box1.y - box2.y) < 30 && Math.abs(box1.x - box2.x) < 30) {
+            let minusx = box1.x - box2.x;
+            let minusy = box1.y - box2.y;
+            let templeft = parseInt(token.style.left);
+            let temptop = parseInt(token.style.top);
+            console.log(minusx, minusy);
+            token.style.left =  `${templeft - minusx}px`;
+            token.style.top = `${temptop - minusy}px`;
+            // console.log(token.style.left, token.style.top);
+
+            setTokenColor(index, i);
+        }
+    }
+}
+
+function checkSolution() {
+    let count = 0;
+    let max_count = 4;
+
+    if (document.getElementById("sol-demon").value == "Matthew") {
+        count += 1;
+    }
+    if (document.getElementById("sol-minion").value == "Hannah") {
+        count += 1;
+    }
+    if (document.getElementById("sol-minion-type").value == "Poisoner") {
+        count += 1;
+    }
+    if (document.getElementById("sol-drunk").value == "There is no Drunk") {
+        count += 1;
+    }
+
+    let percentage = (count / max_count) * 100;
+
+    document.getElementById("perc-correct").textContent = `${percentage}% correct`;
+    document.getElementById("inner-percentage").style.width = `${percentage}%`;
 }

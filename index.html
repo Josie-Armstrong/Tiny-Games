@@ -15,6 +15,7 @@
             <div class="inner-token" id="inner-token-1">
                 <img class="token-img" src="images/Icon_saint.png">
                 <p class="character">Saint</p>
+                <span class="overlay hide" id="over1"></span>
             </div>
             <p class="name">Matthew</p>
         </div>
@@ -23,6 +24,7 @@
             <div class="inner-token" id="inner-token-2">
                 <img class="token-img" src="images/Icon_investigator.png">
                 <p class="character">Investigator</p>
+                <span class="overlay hide" id="over2"></span>
             </div>
             <p class="name">Fraser</p>
         </div>
@@ -31,6 +33,7 @@
             <div class="inner-token" id="inner-token-3">
                 <img class="token-img" src="images/Icon_recluse.png">
                 <p class="character">Recluse</p>
+                <span class="overlay hide" id="over3"></span>
             </div>
             <p class="name">Adam</p>
         </div>
@@ -39,6 +42,7 @@
             <div class="inner-token" id="inner-token-4">
                 <img class="token-img" src="images/Icon_ravenkeeper.png">
                 <p class="character">Ravenkeeper</p>
+                <span class="overlay hide" id="over4"></span>
             </div>
             <p class="name">Jasmine</p>
         </div>
@@ -47,6 +51,7 @@
             <div class="inner-token" id="inner-token-5">
                 <img class="token-img" src="images/Icon_empath.png">
                 <p class="character">Empath</p>
+                <span class="overlay hide" id="over5"></span>
             </div>
             <p class="name">You</p>
         </div>
@@ -55,6 +60,7 @@
             <div class="inner-token" id="inner-token-6">
                 <img class="token-img" src="images/Icon_fortuneteller.png">
                 <p class="character">Fortune Teller</p>
+                <span class="overlay hide" id="over6"></span>
             </div>
             <p class="name">Dan</p>
         </div>
@@ -63,6 +69,7 @@
             <div class="inner-token" id="inner-token-7">
                 <img class="token-img" src="images/Icon_librarian.png">
                 <p class="character">Librarian</p>
+                <span class="overlay hide" id="over7"></span>
             </div>
             <p class="name">Hannah</p>
         </div>
@@ -71,6 +78,7 @@
             <div class="inner-token" id="inner-token-8">
                 <img class="token-img" src="images/Icon_undertaker.png">
                 <p class="character">Undertaker</p>
+                <span class="overlay hide" id="over8"></span>
             </div>
             <p class="name">Tom</p>
         </div>
@@ -79,6 +87,7 @@
             <div class="inner-token" id="inner-token-9">
                 <img class="token-img" src="images/Icon_butler.png">
                 <p class="character">Butler</p>
+                <span class="overlay hide" id="over9"></span>
             </div>
             <p class="name">Sarah</p>
         </div>
@@ -137,13 +146,105 @@
     </div>
 
     <div class="token-depot">
-        <h5>Could be in play:</h5>
+        <h5>These characters could be in play</h5>
         <div class="inner-depot">
-            <div class="draggable-token" id="inner-token-7">
+            <div class="draggable-token" id="imp">
                 <img class="token-img" src="images/Icon_imp.png">
                 <p class="character">Imp</p>
             </div>
+
+            <div class="draggable-token" id="poisoner">
+                <img class="token-img" src="images/Icon_poisoner.png">
+                <p class="character">Poisoner</p>
+            </div>
+
+            <div class="draggable-token" id="spy">
+                <img class="token-img" src="images/Icon_spy.png">
+                <p class="character">Spy</p>
+            </div>
+
+            <div class="draggable-token" id="baron">
+                <img class="token-img" src="images/Icon_baron.png">
+                <p class="character">Baron</p>
+            </div>
+
+            <div class="draggable-token" id="scarlet-woman">
+                <img class="token-img" src="images/Icon_scarletwoman.png">
+                <p class="character">Scarlet Woman</p>
+            </div>
+
+            <div class="draggable-token" id="drunk">
+                <img class="token-img" src="images/Icon_drunk.png">
+                <p class="character">Drunk</p>
+            </div>
         </div>
+    </div>
+
+    <div class="solution-box">
+        <h5>Enter your solution:</h5>
+        <div>
+            <label for="sol-demon">The Demon (Imp) is:</label>
+            <select id="sol-demon">
+                <option>Matthew</option>
+                <option>Fraser</option>
+                <option>Adam</option>
+                <option>Jasmine</option>
+                <option>Dan</option>
+                <option>Hannah</option>
+                <option>Tom</option>
+                <option>Sarah</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="sol-minion">The Minion is:</label>
+            <select id="sol-minion">
+                <option>Matthew</option>
+                <option>Fraser</option>
+                <option>Adam</option>
+                <option>Jasmine</option>
+                <option>Dan</option>
+                <option>Hannah</option>
+                <option>Tom</option>
+                <option>Sarah</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="sol-minion-type">The Minion type is:</label>
+            <select id="sol-minion-type">
+                <option>Poisoner</option>
+                <option>Spy</option>
+                <option>Baron</option>
+                <option>Scarlet Woman</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="sol-drunk">The Drunk is:</label>
+            <select id="sol-drunk">
+                <option>There is no Drunk</option>
+                <option>Matthew</option>
+                <option>Fraser</option>
+                <option>Adam</option>
+                <option>Jasmine</option>
+                <option>Dan</option>
+                <option>Hannah</option>
+                <option>Tom</option>
+                <option>Sarah</option>
+            </select>
+        </div>
+
+        <button id="submit-sol">Submit Solution</button>
+
+        <div id="solution-check">
+            <h5>Your solution is:</h5>
+            <div id="outer-percentage">
+                <span id="inner-percentage"></span>
+            </div>
+            <h5 id="perc-correct">0% correct</h5>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
