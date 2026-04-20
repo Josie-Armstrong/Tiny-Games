@@ -255,8 +255,8 @@ p, h5 {
     box-sizing: border-box;
     border: 5px solid black;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 15vh;
+    height: 15vh;
     max-height: none;
     display: flex;
     flex-direction: column;
