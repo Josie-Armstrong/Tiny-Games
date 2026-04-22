@@ -8,119 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="town-square">
 
-        <div class="token" id="outer-token-1">
-            <div class="inner-token" id="inner-token-1">
-                <img class="token-img" src="images/Icon_saint.png">
-                <p class="character">Saint</p>
-                <span class="overlay hide" id="over1"></span>
-            </div>
-            <p class="name">Matthew</p>
-        </div>
-
-        <div class="token" id="outer-token-2">
-            <div class="shroud">
-                <img class="shroud-img" src="images/red_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-2">
-                <img class="token-img" src="images/Icon_investigator.png">
-                <p class="character">Investigator</p>
-                <span class="overlay hide" id="over2"></span>
-            </div>
-            <p class="name">Fraser</p>
-        </div>
-
-        <div class="token" id="outer-token-3">
-            <div class="shroud">
-                <img class="shroud-img" src="images/red_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-3">
-                <img class="token-img" src="images/Icon_recluse.png">
-                <p class="character">Recluse</p>
-                <span class="overlay hide" id="over3"></span>
-            </div>
-            <p class="name">Adam</p>
-        </div>
-
-        <div class="token" id="outer-token-4">
-            <div class="shroud">
-                <img class="shroud-img" src="images/red_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-4">
-                <img class="token-img" src="images/Icon_ravenkeeper.png">
-                <p class="character">Ravenkeeper</p>
-                <span class="overlay hide" id="over4"></span>
-            </div>
-            <p class="name">Jasmine</p>
-        </div>
-
-        <div class="token" id="outer-token-5">
-            <div class="shroud">
-                <img class="shroud-img" src="images/blue_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-5">
-                <img class="token-img" src="images/Icon_empath.png">
-                <p class="character">Empath</p>
-                <span class="overlay hide" id="over5"></span>
-            </div>
-            <p class="name">You</p>
-        </div>
-
-        <div class="token" id="outer-token-6">
-            <div class="shroud">
-                <img class="shroud-img" src="images/blue_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-6">
-                <img class="token-img" src="images/Icon_fortuneteller.png">
-                <p class="character">Fortune Teller</p>
-                <span class="overlay hide" id="over6"></span>
-            </div>
-            <p class="name">Dan</p>
-        </div>
-
-        <div class="token" id="outer-token-7">
-            <div class="inner-token" id="inner-token-7">
-                <img class="token-img" src="images/Icon_librarian.png">
-                <p class="character">Librarian</p>
-                <span class="overlay hide" id="over7"></span>
-            </div>
-            <p class="name">Hannah</p>
-        </div>
-
-        <div class="token" id="outer-token-8">
-            <div class="inner-token" id="inner-token-8">
-                <img class="token-img" src="images/Icon_undertaker.png">
-                <p class="character">Undertaker</p>
-                <span class="overlay hide" id="over8"></span>
-            </div>
-            <p class="name">Tom</p>
-        </div>
-
-        <div class="token" id="outer-token-9">
-            <div class="shroud">
-                <img class="shroud-img" src="images/blue_shroud.svg">
-            </div>
-            <div class="inner-token" id="inner-token-9">
-                <img class="token-img" src="images/Icon_butler.png">
-                <p class="character">Butler</p>
-                <span class="overlay hide" id="over9"></span>
-            </div>
-            <p class="name">Sarah</p>
-        </div>
-    </div>
-
-    <div class="order-of-events">
-        <h5>Order of Events:</h5>
-        <p><strong>Day 1:</strong> Sarah is executed</p>
-        <p><strong>Night 2:</strong> Adam dies</p>
-        <p><strong>Day 2:</strong> You are executed</p>
-        <p><strong>Night 3:</strong> Fraser dies</p>
-        <p><strong>Day 3:</strong> Dan is executed</p>
-        <p><strong>Night 4:</strong> Jasmine dies</p>
-    </div>
-
+<main class="playspace">
     <div class="left-side">
         <div class="info-bg" id="info-bg">
             <h5>Information Cards (Draggable):</h5>
@@ -132,7 +21,7 @@
 
                 <div class="info-card" id="ic-2">
                     <h5>Fraser:</h5>
-                    <p>"Either Hannah or Sarah is the Spy."</p>
+                    <p id="Fraser-n1">"Either Hannah or Sarah is the Spy."</p>
                 </div>
 
                 <div class="info-card valid-as-outsider" id="ic-3">
@@ -142,27 +31,32 @@
 
                 <div class="info-card" id="ic-4">
                     <h5>Jasmine:</h5>
-                    <p>"I saw Tom as the Undertaker."</p>
+                    <p id="Jasmine-n4">"I saw Tom as the Undertaker."</p>
                 </div>
 
                 <div class="info-card" id="ic-5">
                     <h5>You:</h5>
-                    <p>You saw 0 between Jasmine and Dan on nights 1 and 2.</p>
+                    <p id="You-n1">N1: 0 between Jasmine and Dan</p>
+                    <p id="You-n2">N2: 0 between Jasmine and Dan</p>
                 </div>
 
                 <div class="info-card" id="ic-6">
                     <h5>Dan:</h5>
-                    <p>"I saw:<br>N1: Sarah & Fraser = no,<br>N2: You & Hannah = no,<br>N3: Dan & Hannah = no."</p>
+                    <p id="Dan-n1">"N1: Sarah & Fraser = no</p>
+                    <p id="Dan-n2">N2: You & Hannah = no</p>
+                    <p id="Dan-n3">N3: Dan & Hannah = no."</p>
                 </div>
 
                 <div class="info-card" id="ic-7">
                     <h5>Hannah:</h5>
-                    <p>"Either Tom or Fraser is the Drunk."</p>
+                    <p id="Hannah-n1">"Either Tom or Fraser is the Drunk."</p>
                 </div>
 
                 <div class="info-card" id="ic-8">
                     <h5>Tom:</h5>
-                    <p>"I saw:<br>N2: Sarah = Butler,<br>N3: You = Baron,<br>N4: Dan = Spy."</p>
+                    <p id="Tom-n2">"N2: Sarah = Butler</p>
+                    <p id="Tom-n3">N3: You = Baron</p>
+                    <p id="Tom-n4">N4: Dan = Spy."</p>
                 </div>
 
                 <div class="info-card valid-as-outsider" id="ic-9">
@@ -170,7 +64,7 @@
                     <p>"Tea?"</p>
                 </div>
             </div>
-            <button id="hide-info">Hide</button>
+            <button class="hide" id="hide-info">Hide</button>
         </div>
 
         <div class="rules">
@@ -186,119 +80,340 @@
                 <p><strong>It's your job to figure out: who is the demon, and who is the minion?</strong></p>
             </div>
 
-            <button id="rules-collapse">Hide</button>
+            <button class="hide" id="rules-collapse">Hide</button>
         </div>
     </div>
 
-    <div class="poisoning">
+    <div class="center">
+        <div class="town-square">
 
-    </div>
-
-    <div class="token-depot">
-        <h5>These characters could be in play</h5>
-        <div class="inner-depot">
-            <div class="draggable-token" id="imp">
-                <img class="token-img" src="images/Icon_imp.png">
-                <p class="character">Imp</p>
+            <div class="token" id="outer-token-1">
+                <div class="inner-token" id="inner-token-1">
+                    <img class="token-img" src="images/Icon_saint.png">
+                    <p class="character">Saint</p>
+                    <span class="overlay hide" id="over1"></span>
+                </div>
+                <p class="name">Matthew</p>
             </div>
 
-            <div class="draggable-token" id="poisoner">
-                <img class="token-img" src="images/Icon_poisoner.png">
-                <p class="character">Poisoner</p>
+            <div class="token" id="outer-token-2">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/red_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-2">
+                    <img class="token-img" src="images/Icon_investigator.png">
+                    <p class="character">Investigator</p>
+                    <span class="overlay hide" id="over2"></span>
+                </div>
+                <p class="name">Fraser</p>
             </div>
 
-            <div class="draggable-token" id="spy">
-                <img class="token-img" src="images/Icon_spy.png">
-                <p class="character">Spy</p>
+            <div class="token" id="outer-token-3">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/red_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-3">
+                    <img class="token-img" src="images/Icon_recluse.png">
+                    <p class="character">Recluse</p>
+                    <span class="overlay hide" id="over3"></span>
+                </div>
+                <p class="name">Adam</p>
             </div>
 
-            <div class="draggable-token" id="baron">
-                <img class="token-img" src="images/Icon_baron.png">
-                <p class="character">Baron</p>
+            <div class="token" id="outer-token-4">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/red_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-4">
+                    <img class="token-img" src="images/Icon_ravenkeeper.png">
+                    <p class="character">Ravenkeeper</p>
+                    <span class="overlay hide" id="over4"></span>
+                </div>
+                <p class="name">Jasmine</p>
             </div>
 
-            <div class="draggable-token" id="scarlet-woman">
-                <img class="token-img" src="images/Icon_scarletwoman.png">
-                <p class="character">Scarlet Woman</p>
+            <div class="token" id="outer-token-5">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/blue_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-5">
+                    <img class="token-img" src="images/Icon_empath.png">
+                    <p class="character">Empath</p>
+                    <span class="overlay hide" id="over5"></span>
+                </div>
+                <p class="name">You</p>
             </div>
 
-            <div class="draggable-token" id="drunk">
-                <img class="token-img" src="images/Icon_drunk.png">
-                <p class="character">Drunk</p>
+            <div class="token" id="outer-token-6">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/blue_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-6">
+                    <img class="token-img" src="images/Icon_fortuneteller.png">
+                    <p class="character">Fortune Teller</p>
+                    <span class="overlay hide" id="over6"></span>
+                </div>
+                <p class="name">Dan</p>
             </div>
+
+            <div class="token" id="outer-token-7">
+                <div class="inner-token" id="inner-token-7">
+                    <img class="token-img" src="images/Icon_librarian.png">
+                    <p class="character">Librarian</p>
+                    <span class="overlay hide" id="over7"></span>
+                </div>
+                <p class="name">Hannah</p>
+            </div>
+
+            <div class="token" id="outer-token-8">
+                <div class="inner-token" id="inner-token-8">
+                    <img class="token-img" src="images/Icon_undertaker.png">
+                    <p class="character">Undertaker</p>
+                    <span class="overlay hide" id="over8"></span>
+                </div>
+                <p class="name">Tom</p>
+            </div>
+
+            <div class="token" id="outer-token-9">
+                <div class="shroud">
+                    <img class="shroud-img" src="images/blue_shroud.svg">
+                </div>
+                <div class="inner-token" id="inner-token-9">
+                    <img class="token-img" src="images/Icon_butler.png">
+                    <p class="character">Butler</p>
+                    <span class="overlay hide" id="over9"></span>
+                </div>
+                <p class="name">Sarah</p>
+            </div>
+        </div>
+
+        <div class="order-of-events">
+            <h5>Order of Events:</h5>
+            <p><strong>Day 1:</strong> Sarah is executed</p>
+            <p><strong>Night 2:</strong> Adam dies</p>
+            <p><strong>Day 2:</strong> You are executed</p>
+            <p><strong>Night 3:</strong> Fraser dies</p>
+            <p><strong>Day 3:</strong> Dan is executed</p>
+            <p><strong>Night 4:</strong> Jasmine dies</p>
         </div>
     </div>
 
-    <div class="solution-box">
-        <h5>Enter your solution:</h5>
-        <div>
-            <label for="sol-demon">The Demon (Imp) is:</label>
-            <select id="sol-demon">
-                <option></option>
-                <option>Matthew</option>
-                <option>Fraser</option>
-                <option>Adam</option>
-                <option>Jasmine</option>
-                <option>Dan</option>
-                <option>Hannah</option>
-                <option>Tom</option>
-                <option>Sarah</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="sol-minion">The Minion is:</label>
-            <select id="sol-minion">
-                <option></option>
-                <option>Matthew</option>
-                <option>Fraser</option>
-                <option>Adam</option>
-                <option>Jasmine</option>
-                <option>Dan</option>
-                <option>Hannah</option>
-                <option>Tom</option>
-                <option>Sarah</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="sol-minion-type">The Minion type is:</label>
-            <select id="sol-minion-type">
-                <option></option>
-                <option>Poisoner</option>
-                <option>Spy</option>
-                <option>Baron</option>
-                <option>Scarlet Woman</option>
-            </select>
-        </div>
-
-        <div>
-            <label for="sol-drunk">The Drunk is:</label>
-            <select id="sol-drunk">
-                <option></option>
-                <option>There is no Drunk</option>
-                <option>Matthew</option>
-                <option>Fraser</option>
-                <option>Adam</option>
-                <option>Jasmine</option>
-                <option>Dan</option>
-                <option>Hannah</option>
-                <option>Tom</option>
-                <option>Sarah</option>
-            </select>
-        </div>
-
-        <button id="submit-sol">Submit Solution</button>
-
-        <div id="solution-check">
-            <h5>Your solution is:</h5>
-            <div id="outer-percentage">
-                <span id="inner-percentage"></span>
+    <div class="right-side">
+        <div class="solution-box">
+            <h5>Enter your solution:</h5>
+            <button id="hint-btn">Hint</button>
+            <div>
+                <label for="sol-demon">The Demon (Imp) is:</label>
+                <select id="sol-demon">
+                    <option></option>
+                    <option>Matthew</option>
+                    <option>Fraser</option>
+                    <option>Adam</option>
+                    <option>Jasmine</option>
+                    <option>Dan</option>
+                    <option>Hannah</option>
+                    <option>Tom</option>
+                    <option>Sarah</option>
+                </select>
             </div>
-            <h5 id="perc-correct">0% correct</h5>
+
+            <div>
+                <label for="sol-minion">The Minion is:</label>
+                <select id="sol-minion">
+                    <option></option>
+                    <option>Matthew</option>
+                    <option>Fraser</option>
+                    <option>Adam</option>
+                    <option>Jasmine</option>
+                    <option>Dan</option>
+                    <option>Hannah</option>
+                    <option>Tom</option>
+                    <option>Sarah</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="sol-minion-type">The Minion type is:</label>
+                <select id="sol-minion-type">
+                    <option></option>
+                    <option>Poisoner</option>
+                    <option>Spy</option>
+                    <option>Baron</option>
+                    <option>Scarlet Woman</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="sol-drunk">The Drunk is:</label>
+                <select id="sol-drunk">
+                    <option></option>
+                    <option>There is no Drunk</option>
+                    <option>Matthew</option>
+                    <option>Fraser</option>
+                    <option>Adam</option>
+                    <option>Jasmine</option>
+                    <option>Dan</option>
+                    <option>Hannah</option>
+                    <option>Tom</option>
+                    <option>Sarah</option>
+                </select>
+            </div>
+
+            <button id="submit-sol">Submit Solution</button>
+
+            <div id="solution-check">
+                <h5>Your solution is:</h5>
+                <div id="outer-percentage">
+                    <span id="inner-percentage"></span>
+                </div>
+                <h5 id="perc-correct">0% correct</h5>
+            </div>
+
         </div>
 
+        <div class="poisoning">
+            <h5>Poisoning (if there is a poisioner)</h5>
+            <div class="poison-inputs">
+                <div>
+                    <label for="p-n1">N1/D1:</label>
+                    <select id="p-n1">
+                        <option></option>
+                        <option>Matthew</option>
+                        <option>Fraser</option>
+                        <option>Adam</option>
+                        <option>Jasmine</option>
+                        <option>You</option>
+                        <option>Dan</option>
+                        <option>Hannah</option>
+                        <option>Tom</option>
+                        <option>Sarah</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="p-n2">N2/D2:</label>
+                    <select id="p-n2">
+                        <option></option>
+                        <option>Matthew</option>
+                        <option>Fraser</option>
+                        <option>Adam</option>
+                        <option>Jasmine</option>
+                        <option>You</option>
+                        <option>Dan</option>
+                        <option>Hannah</option>
+                        <option>Tom</option>
+                        <option>Sarah</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="p-n3">N3/D3:</label>
+                    <select id="p-n3">
+                        <option></option>
+                        <option>Matthew</option>
+                        <option>Fraser</option>
+                        <option>Adam</option>
+                        <option>Jasmine</option>
+                        <option>You</option>
+                        <option>Dan</option>
+                        <option>Hannah</option>
+                        <option>Tom</option>
+                        <option>Sarah</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="p-n4">N4/D4:</label>
+                    <select id="p-n4">
+                        <option></option>
+                        <option>Matthew</option>
+                        <option>Fraser</option>
+                        <option>Adam</option>
+                        <option>Jasmine</option>
+                        <option>You</option>
+                        <option>Dan</option>
+                        <option>Hannah</option>
+                        <option>Tom</option>
+                        <option>Sarah</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="token-depot">
+            <h5>These characters could be in play</h5>
+            <div class="inner-depot">
+                <div class="draggable-token" id="imp">
+                    <img class="token-img" src="images/Icon_imp.png">
+                    <p class="character">Imp</p>
+                </div>
+
+                <div class="draggable-token" id="poisoner">
+                    <img class="token-img" src="images/Icon_poisoner.png">
+                    <p class="character">Poisoner</p>
+                </div>
+
+                <div class="draggable-token" id="spy">
+                    <img class="token-img" src="images/Icon_spy.png">
+                    <p class="character">Spy</p>
+                </div>
+
+                <div class="draggable-token" id="baron">
+                    <img class="token-img" src="images/Icon_baron.png">
+                    <p class="character">Baron</p>
+                </div>
+
+                <div class="draggable-token" id="scarlet-woman">
+                    <img class="token-img" src="images/Icon_scarletwoman.png">
+                    <p class="character">Scarlet Woman</p>
+                </div>
+
+                <div class="draggable-token" id="drunk">
+                    <img class="token-img" src="images/Icon_drunk.png">
+                    <p class="character">Drunk</p>
+                </div>
+            </div>
+        </div>
     </div>
+</main>
+
+    <div class="popup" id="intro">
+        <h4>Blood on the Clocktower Puzzle</h4>
+        <hr>
+
+        <p>It's the final day, and three players live. Among them is the demon. Who do you execute to win the game?</p>
+
+        <p>In this <em>Blood on the Clocktower</em> puzzle, your job is to identify who the demon is, who the minion is, and what type of minion you're dealing with. This is a nine player game of Trouble Brewing.</p>
+
+        <h5>Rules:</h5>
+
+        <p>There is one Demon (Imp) and one Minion (Poisoner, Spy, Baron or Scarlet Woman).</p>
+        <p>Evil players lie about their role and may lie with their information.</p>
+        <p>Good players truthfully report their role and the information they are shown (but they do not know if they are the Drunk).</p>
+        <p>The default outsider count for nine players is two. The Baron, if in play, adds two more outsiders (for a total of four).</p>
+        <p>You are not evil, but you might be the Drunk.</p>
+
+        <p><strong>It's your job to figure out: who is the demon, and who is the minion?</strong></p>
+
+        <p><em>Never played Blood on the Clocktower? Maybe don't start here. Check out <a href="https://www.youtube.com/watch?v=M-aZP47Nm9g">this video</a> from The Pandemonium Institute on how to play, and the <a href="https://wiki.bloodontheclocktower.com/Main_Page">wiki</a> for more information on how to play, the characters of Trouble Brewing, and more!</em></p>
+
+        <button id="intro-btn">Close</button>
+    </div>
+
+    <div class="popup hide" id="hint">
+        <h5>Hint:</h5>
+        <p>There is no Baron in play.</p>
+        <button id="toggle-hint">Close Hint</button>
+    </div>
+
+    <div class="popup hide" id="congrats">
+        <h4>You've solved it!</h4>
+        <p>With your guidance, Tom nominates Matthew and explains why. Town uses their dead votes to put Matthew on the block, and the good team wins!</p>
+        <p id="stats">You solved this puzzle in 0 minutes and 0 seconds. It took you 0 tries to get the correct answer.</p>
+        <button id="close-congrats">Back to Puzzle</button>
+    </div>
+
+    <div id="overlay"></div>
 
     <script src="script.js"></script>
 </body>

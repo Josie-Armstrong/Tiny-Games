@@ -98,7 +98,38 @@ const info_bg = document.getElementById("info-bg");
 const hide_info_btn = document.getElementById("hide-info")
 hide_info_btn.addEventListener('click', (e) => {toggleInfoBG()});
 
+// Elements and such for poison
+const poison_arr = [document.getElementById("p-n1"),
+    document.getElementById("p-n2"),
+    document.getElementById("p-n3"),
+    document.getElementById("p-n4")
+]
+
+for (let i = 0; i < poison_arr.length; i++) {
+    let temp_i = i;
+    poison_arr[i].addEventListener('change', (e) => {changePoison(temp_i)});
+}
+
+let name_arr = ["Matthew", "Fraser", "Adam", "Jasmine", "You", "Dan", "Hannah", "Tom", "Sarah"];
+let n1 = ["Fraser", "You", "Dan", "Hannah"]
+let n2 = ["You", "Dan", "Tom"]
+let n3 = ["Dan", "Tom"]
+let n4 = ["Jasmine", "Tom"]
+let poison_nights = [n1, n2, n3, n4];
+
+// Timer and # tries for stats
+let tries = 0;
+let start_time = 0;
+let end_time;
+let total_time;
+let stats = document.getElementById("stats");
+let done = false
+
+document.getElementById("intro-btn").addEventListener('click', toggleIntro);
 document.getElementById("submit-sol").addEventListener('click', checkSolution);
+document.getElementById("close-congrats").addEventListener('click', toggleCongrats);
+document.getElementById("toggle-hint").addEventListener('click', toggleHint);
+document.getElementById("hint-btn").addEventListener('click', toggleHint);
 
 window.addEventListener("load", () => {runOnLoad()});
 
@@ -243,6 +274,9 @@ function checkBounds(token, index) {
 function checkSolution() {
     let count = 0;
     let max_count = 4;
+    if (!done) {
+        tries += 1;
+    }
 
     if (document.getElementById("sol-demon").value == "Matthew") {
         count += 1;
@@ -261,4 +295,63 @@ function checkSolution() {
 
     document.getElementById("perc-correct").textContent = `${percentage}% correct`;
     document.getElementById("inner-percentage").style.width = `${percentage}%`;
+
+    if (percentage == 100) {
+        endGame();
+    }
+}
+
+function changePoison(index) {
+
+    // Resetting strikethrough for all poisonable info on that night
+    for (let i = 0; i < poison_nights[index].length; i++) {
+        let name = poison_nights[index][i];
+        let string = `${name}-n${index + 1}`;
+        //console.log(string);
+        document.getElementById(string).classList.remove("strikethrough");
+    }
+
+    let name = poison_arr[index].value;
+    let string = `${name}-n${index + 1}`;
+    document.getElementById(string).classList.add("strikethrough");
+}
+
+function toggleCongrats() {
+    document.getElementById("congrats").classList.toggle("hide");
+    document.getElementById("overlay").classList.toggle("hide");
+}
+
+function toggleIntro() {
+    document.getElementById("intro").classList.toggle("hide");
+    document.getElementById("overlay").classList.toggle("hide");
+
+    if (start_time == 0) {
+        start_time = performance.now();
+    }
+}
+
+function toggleHint() {
+    document.getElementById("hint").classList.toggle("hide");
+    document.getElementById("overlay").classList.toggle("hide");
+}
+
+function endGame() {
+    if (!done) {
+        end_time = performance.now();
+        total_time = end_time - start_time;
+    }
+    
+    done = true;
+    // console.log(total_time);
+    let total_seconds = total_time / 1000;
+    let minutes = Math.floor(total_seconds / 60);
+    let seconds = Math.floor(total_seconds % 60);
+    let try_string = "tries";
+    if (tries == 1) {
+        try_string = "try";
+    }
+
+    stats.textContent = `You solved this puzzle in ${minutes} minutes and ${seconds} seconds. It took you ${tries} ${try_string} to get the correct answer.`;
+
+    toggleCongrats();
 }
