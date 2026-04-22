@@ -123,7 +123,8 @@ let start_time = 0;
 let end_time;
 let total_time;
 let stats = document.getElementById("stats");
-let done = false
+let done = false;
+let game_started = false;
 
 document.getElementById("intro-btn").addEventListener('click', toggleIntro);
 document.getElementById("submit-sol").addEventListener('click', checkSolution);
@@ -140,28 +141,30 @@ function runOnLoad() {
 }
 
 function switchTokenColor(i) {
-    let new_color;
+    if (game_started) {
+        let new_color;
 
-    if (current_colors[i] < (color_switch_array.length - 1)) {
-        new_color = color_switch_array[current_colors[i] + 1];
-        current_colors[i] += 1;
-    }
-    else {
-        new_color = color_switch_array[0];
-        current_colors[i] = 0;
-    }
+        if (current_colors[i] < (color_switch_array.length - 1)) {
+            new_color = color_switch_array[current_colors[i] + 1];
+            current_colors[i] += 1;
+        }
+        else {
+            new_color = color_switch_array[0];
+            current_colors[i] = 0;
+        }
 
-    // inner_tokens[i].style.borderColor = new_color;
-    inner_tokens[i].style.boxShadow = `0px 0px 8px 8px ${new_color}`;
+        // inner_tokens[i].style.borderColor = new_color;
+        inner_tokens[i].style.boxShadow = `0px 0px 8px 8px ${new_color}`;
 
-    if (current_colors[i] == 1 && (!info_cards[i].classList.contains("valid-as-outsider"))) {
-        info_cards[i].classList.add("invalid");
-    }
-    else if (current_colors[i] > 1) {
-        info_cards[i].classList.add("invalid");
-    }
-    else {
-        info_cards[i].classList.remove("invalid");
+        if (current_colors[i] == 1 && (!info_cards[i].classList.contains("valid-as-outsider"))) {
+            info_cards[i].classList.add("invalid");
+        }
+        else if (current_colors[i] > 1) {
+            info_cards[i].classList.add("invalid");
+        }
+        else {
+            info_cards[i].classList.remove("invalid");
+        }
     }
 }
 
@@ -328,6 +331,8 @@ function toggleIntro() {
     if (start_time == 0) {
         start_time = performance.now();
     }
+
+    game_started = true;
 }
 
 function toggleHint() {
@@ -340,7 +345,7 @@ function endGame() {
         end_time = performance.now();
         total_time = end_time - start_time;
     }
-    
+
     done = true;
     // console.log(total_time);
     let total_seconds = total_time / 1000;
